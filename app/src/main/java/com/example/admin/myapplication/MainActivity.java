@@ -15,7 +15,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
     Button BtnRooting, BtnSquare, BtnReciprocal, BtnCE, BtnC, BtnBack, BtnDivide, Btn7, Btn8, Btn9, BtnMultiply, Btn4, Btn5, Btn6, BtnMinus, Btn1, Btn2, Btn3, BtnPlus, BtnSign, Btn0, BtnPoint, BtnEqual;
     TextView text;
     boolean clear;
-    double a =0;
+    double a =0,b;
     String str,exp,s1,s2,op;
     double ss1,ss2;
     int space,result;
@@ -127,13 +127,44 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 text.setText("");
                 break;
             case R.id.BtnReciprocal:
-                a=1/a;
+                if (clear)
+                {
+                    clear=false;
+                    str="";
+                    text.setText("");
+                }
+                    b = 1 / a;
+                text.setText(b+"");
                 break;
             case R.id.BtnSquare:
-                a=a*a;
+                if (clear)
+                {
+                    clear=false;
+                    str="";
+                    text.setText("");
+                }
+                b=a*a;
+                text.setText(b+"");
                 break;
             case R.id.BtnRooting:
-                a=Math.sqrt(a);
+                if (clear)
+                {
+                    clear=false;
+                    str="";
+                    text.setText("");
+                }
+                    b=Math.sqrt(a);
+                text.setText(b+"");
+                break;
+            case R.id.BtnSign:
+                if (clear)
+                {
+                    clear=false;
+                    str="";
+                    text.setText("");
+                }
+                    b=-a;
+                text.setText(b+"");
                 break;
             case R.id.BtnEqual:
                 getResult();
@@ -209,7 +240,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 a = 0 ;
 
             }else  if (op.equals("÷")){
-                a = 0 ;
+                text.setText("除数不能为零");
             }
             if (s2.contains(".")) {
                 result = (int)a;
@@ -275,7 +306,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
             }
             else  if (op.equals("÷"))
             {
-                a = 0 ;
+                text.setText("除数不能为零"); ;
             }
             if (s2.contains("."))
             {
